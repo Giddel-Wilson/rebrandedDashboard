@@ -2,10 +2,15 @@
     import { fade, fly, slide } from 'svelte/transition';
     import { onMount } from 'svelte';
     import { writable } from 'svelte/store';
-    import { Button } from "$lib/components/ui/button";
-    import { Card } from "$lib/components/ui/card";
-    import { Input } from "$lib/components/ui/input";
-    import { Switch } from "$lib/components/ui/switch";
+    import { Button } from '$lib/components/ui/button';
+    import { Card } from '$lib/components/ui/card';
+    import { Input } from '$lib/components/ui/input';
+    import { Switch } from '$lib/components/ui/switch';
+    import robo from '$lib/assets/robo.png'
+    import roboSitting from '$lib/assets/robo-sitting.png'
+    import roboReflect from '$lib/assets/robo-reflect.png'
+    import roboTouching from '$lib/assets/robo-touching.png'
+    import chillGuy from '$lib/assets/chill-guy.png'
     import { 
       LayoutGrid, 
       Calendar, 
@@ -124,8 +129,8 @@
   <div class="min-h-screen bg-[#F5F7FF] dark:bg-gray-900 flex flex-col md:flex-row transition-colors duration-300">
     <!-- Sidebar for desktop -->
     <nav class="hidden md:flex fixed left-0 top-0 h-full w-[72px] bg-white dark:bg-gray-800 shadow-sm flex-col items-center py-6 gap-8 z-10">
-      <div class="w-8 h-8">
-        <img src="/logo.svg" alt="Logo" class="w-full h-full" />
+      <div class="w-12 h-12">
+        <img src={roboSitting} alt="Logo" class="w-full h-full bg-blue-600 dark:bg-blue-700 p-2 rounded-full" />
       </div>
       {#if mounted}
         <div class="flex flex-col gap-6" transition:fade>
@@ -188,10 +193,10 @@
             <h1 class="text-xl font-semibold mb-6 dark:text-white">Dashboard</h1>
             
             <!-- Welcome Card -->
-            <Card class="p-6 md:p-8 mb-8 bg-white dark:bg-gray-800 rounded-2xl shadow-sm">
-              <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+            <Card class="p-6 pb-0 md:p-8 mb-8 bg-white dark:bg-gray-800 rounded-2xl shadow-sm">
+              <div class="flex flex-col md:flex-row justify-between items-center gap-6 relative md:h-56">
                 <div>
-                  <h2 class="text-2xl font-bold mb-2 dark:text-white">Hi, George!</h2>
+                  <h2 class="text-2xl font-bold mb-2 dark:text-white">Hi, Giddel!</h2>
                   <p class="text-gray-600 dark:text-gray-400 mb-6">What are we doing today?</p>
                   <div class="flex flex-wrap gap-4">
                     {#each actions as { text, color }}
@@ -206,9 +211,14 @@
                   </div>
                 </div>
                 <img 
-                  src="/polar-bear.png" 
+                  src={roboReflect}
                   alt="Cute polar bear" 
-                  class="w-32 h-32 md:w-40 md:h-40 object-contain"
+                  class="block dark:hidden w-80 h-80 md:w-96 md:h-96 object-contain md:absolute right-0 -top-8"
+                />
+                <img 
+                  src={roboTouching}
+                  alt="Cute polar bear" 
+                  class="hidden dark:block w-80 h-80 md:w-80 md:h-80 object-contain md:absolute right-0 -top-6 drop-shadow-lg"
                 />
               </div>
             </Card>
